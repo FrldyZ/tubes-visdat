@@ -278,7 +278,7 @@ tab3 = Panel(child=fig3, title="Reliance")
 
 
 
-tabs3 = Tabs(tabs=[tab1, tab2, tab3])
+tabs = Tabs(tabs=[tab1, tab2, tab3])
 
 set_style(fig1)
 set_style(fig2)
@@ -303,7 +303,6 @@ layout=layout([
                [select],
                [tabs1],
                [tabs2],
-               [tabs3],
                [fig],
 ])
 
