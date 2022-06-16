@@ -239,7 +239,6 @@ select.js_on_change('value',
                     code="""
                         new_y = {'field':this.value}
                         points.glyph.y = new_y
-                        points2.glyph.y = new_y
               
 
                         if(this.value == 'Close'){
