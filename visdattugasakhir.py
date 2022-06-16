@@ -123,7 +123,7 @@ tab3 = Panel(child=fig3, title="Reliance")
 
 
 
-tabs = Tabs(tabs=[tab1, tab2, tab3])
+tabs1 = Tabs(tabs=[tab1, tab2, tab3])
 
 set_style(fig1)
 set_style(fig2)
@@ -153,7 +153,7 @@ tab3 = Panel(child=fig3, title="Reliance")
 
 
 
-tabs = Tabs(tabs=[tab1, tab2, tab3])
+tabs2 = Tabs(tabs=[tab1, tab2, tab3])
 
 set_style(fig1)
 set_style(fig2)
@@ -190,8 +190,34 @@ TOOLTIPS2="""
       </div>
 
 """
+fig1 =figure(title='Asian Paint Volume In Stock Market',
+           x_axis_label='Month-Year', y_axis_label='Price',
+           x_axis_type='datetime',
+           sizing_mode="stretch_width", plot_height=350,plot_width=750)
+fig1.line(x=df_asianpaint['Date'], y=df_asianpaint['Volume'], line_width=2, line_color="cyan")
+tab1 = Panel(child=fig1, title="Asian Paint")
+
+fig2 =figure(title='Tata Motors Volume In Stock Market',
+           x_axis_label='Month-Year', y_axis_label='Price',
+           x_axis_type='datetime',
+           sizing_mode="stretch_width", plot_height=350,plot_width=750)
+fig2.line(x=df_tatamotors['Date'], y=df_tatamotors['Volume'], line_width=2, line_color="red")
+tab2 = Panel(child=fig2, title="Tata Motors")
+
+fig3 =figure(title='Tata Motors Volume In Stock Market',
+           x_axis_label='Month-Year', y_axis_label='Price',
+           x_axis_type='datetime',
+           sizing_mode="stretch_width", plot_height=350,plot_width=750)
+fig3.line(x=df_reliance['Date'], y=df_reliance['Volume'], line_width=2, line_color="yellow")
+tab3 = Panel(child=fig3, title="Reliance")
 
 
+
+tabs = Tabs(tabs=[tab1, tab2, tab3])
+
+set_style(fig1)
+set_style(fig2)
+set_style(fig3)
 
 
 
@@ -252,7 +278,7 @@ tab3 = Panel(child=fig3, title="Reliance")
 
 
 
-tabs = Tabs(tabs=[tab1, tab2, tab3])
+tabs3 = Tabs(tabs=[tab1, tab2, tab3])
 
 set_style(fig1)
 set_style(fig2)
@@ -275,7 +301,9 @@ fig.legend.click_policy="hide"
 
 layout=layout([
                [select],
-               [tabs],
+               [tabs1],
+               [tabs2],
+               [tabs3],
                [fig],
 ])
 
