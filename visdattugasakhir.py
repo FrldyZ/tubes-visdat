@@ -221,10 +221,6 @@ set_style(fig1)
 set_style(fig2)
 set_style(fig3)
 
-
-
-
-
 fig = figure(title='STOCK MARKET',
              x_axis_label='Month-Year', y_axis_label='Price and Volume',
              x_axis_type='datetime',
@@ -321,7 +317,6 @@ set_style(fig1)
 set_style(fig2)
 set_style(fig3)
 
-show(tabs)
 plot = fig1
 line = fig1.line(x=df_asianpaint['Date'], y=df_asianpaint['Volume'], line_width=2, line_color="cyan")
 
@@ -348,6 +343,8 @@ layout=layout([
                [select],
                [tabs1],
                [tabs2],
+               [plot],
+               [picker],
                [fig],
 ])
 
