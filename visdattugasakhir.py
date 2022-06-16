@@ -233,13 +233,14 @@ points2 = fig.line(x='Date', y='Close', source=tatamotors_cds, legend_label="Tat
 points3 = fig.line(x='Date', y='Close', source=reliance_cds, legend_label="Reliance", line_width=2, line_color="yellow")
 
 
-select = Select(title="Choose Parameter", value=points.glyph.y, options=['Price', 'Volume'])
+select = Select(title="Choose Parameter", value=points.glyph.y, options=['Close', 'Volume'])
 select.js_on_change('value',
                     CustomJS(args=dict(other1=fig, hover=hover, TOOLTIPS=TOOLTIPS, TOOLTIPS2=TOOLTIPS2, fig=fig.tools, points=points, points2=points2, points3=points3, new_y={}),
                     code="""
                         new_y = {'field':this.value}
                         points.glyph.y = new_y
                         points2.glyph.y = new_y
+                        points3.glyph.y = new_y
               
 
                         if(this.value == 'Close'){
