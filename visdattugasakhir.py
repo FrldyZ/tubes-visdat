@@ -190,6 +190,8 @@ TOOLTIPS2="""
       </div>
 
 """
+
+
 fig1 =figure(title='Asian Paint Volume In Stock Market',
            x_axis_label='Month-Year', y_axis_label='Price',
            x_axis_type='datetime',
@@ -285,6 +287,48 @@ set_style(fig1)
 set_style(fig2)
 set_style(fig3)
 
+from bokeh.io import show
+from bokeh.layouts import column
+from bokeh.models import ColorPicker
+from bokeh.plotting import Figure
+
+fig1 =figure(title='Asian Paint Volume In Stock Market',
+           x_axis_label='Month-Year', y_axis_label='Price',
+           x_axis_type='datetime',
+           sizing_mode="stretch_width", plot_height=350,plot_width=750)
+fig1.line(x=df_asianpaint['Date'], y=df_asianpaint['Volume'], line_width=2, line_color="cyan")
+tab1 = Panel(child=fig1, title="Asian Paint")
+
+fig2 =figure(title='Tata Motors Volume In Stock Market',
+           x_axis_label='Month-Year', y_axis_label='Price',
+           x_axis_type='datetime',
+           sizing_mode="stretch_width", plot_height=350,plot_width=750)
+fig2.line(x=df_tatamotors['Date'], y=df_tatamotors['Volume'], line_width=2, line_color="red")
+tab2 = Panel(child=fig2, title="Tata Motors")
+
+fig3 =figure(title='Tata Motors Volume In Stock Market',
+           x_axis_label='Month-Year', y_axis_label='Price',
+           x_axis_type='datetime',
+           sizing_mode="stretch_width", plot_height=350,plot_width=750)
+fig3.line(x=df_reliance['Date'], y=df_reliance['Volume'], line_width=2, line_color="yellow")
+tab3 = Panel(child=fig3, title="Reliance")
+
+
+
+tabs = Tabs(tabs=[tab1, tab2, tab3])
+
+set_style(fig1)
+set_style(fig2)
+set_style(fig3)
+
+show(tabs)
+plot = fig1
+line = fig1.line(x=df_asianpaint['Date'], y=df_asianpaint['Volume'], line_width=2, line_color="cyan")
+
+picker = ColorPicker(title="Line Color")
+picker.js_link('color', line.glyph, 'line_color')
+
+show(column(plot, picker))
 
 fig.add_tools(hover)
 
