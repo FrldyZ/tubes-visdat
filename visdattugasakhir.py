@@ -13,8 +13,6 @@ Import Important Library
 
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook, output_file, curdoc
@@ -24,43 +22,18 @@ from bokeh.layouts import row
 from bokeh.plotting import Figure
 from bokeh.layouts import column
 
-"""Instalasi"""
-
-#install library bokeh
-!pip install bokeh
-
-#install library geopandas menggunakan conda
-!pip install geopandas
-
 curdoc().theme = "contrast"
 
-output_notebook()
 
 """Handle Dataset"""
 
-#Asian Paint
-!gdown --id 14uhrE5cTHZy2C4WOYgF4--HjuT740ha4
 
-#Tata Motors
-!gdown --id 17Bq3hvEjDr46YgjUa4FF1QTKhpmoMkhC
+df_asianpaint = pd.read_csv("./asianpaint.csv")
 
-#Reliance
-!gdown --id 1IBcztR_JwBX8SflWO5puwEq6rTBO7hLm
+df_tatamotors = pd.read_csv("./tatamotors.csv")
 
-df_asianpaint = pd.read_csv("asianpaint.csv")
-df_asianpaint.head()
+df_reliance = pd.read_csv("./reliance.csv")
 
-df_tatamotors = pd.read_csv("tatamotors.csv")
-df_tatamotors.head()
-
-df_reliance = pd.read_csv("reliance.csv")
-df_reliance.head()
-
-df_asianpaint.shape
-
-df_tatamotors.shape
-
-df_reliance.shape
 
 df_asianpaint['Date'] = pd.to_datetime(df_asianpaint['Date'])
 df_tatamotors['Date'] = pd.to_datetime(df_tatamotors['Date'])
@@ -73,7 +46,6 @@ p = figure(title='Asian Paint In Stock Market',
 
 p.line(x=df_asianpaint['Date'], y=df_asianpaint['Close'], line_width=2, line_color="cyan")
 
-show(p)
 
 p = figure(title='Asian Paint In Stock Market',
            x_axis_label='Month-Year', y_axis_label='Volume',
@@ -82,7 +54,6 @@ p = figure(title='Asian Paint In Stock Market',
 
 p.line(x=df_asianpaint['Date'], y=df_asianpaint['Volume'], line_width=2, line_color="cyan")
 
-show(p)
 
 p = figure(title='Tata Motors In Stock Market',
            x_axis_label='Month-Year', y_axis_label='Price',
@@ -91,8 +62,6 @@ p = figure(title='Tata Motors In Stock Market',
 
 p.line(x=df_tatamotors['Date'], y=df_tatamotors['Close'], line_width=2, line_color="red")
 
-show(p)
-
 p = figure(title='Tata Motors In Stock Market',
            x_axis_label='Month-Year', y_axis_label='Volume',
            x_axis_type='datetime',
@@ -100,7 +69,6 @@ p = figure(title='Tata Motors In Stock Market',
 
 p.line(x=df_tatamotors['Date'], y=df_tatamotors['Volume'], line_width=2, line_color="red")
 
-show(p)
 
 p = figure(title='Reliance In Stock Market',
            x_axis_label='Month-Year', y_axis_label='Price',
@@ -109,7 +77,6 @@ p = figure(title='Reliance In Stock Market',
 
 p.line(x=df_reliance['Date'], y=df_reliance['Close'], line_width=2, line_color="yellow")
 
-show(p)
 
 p = figure(title='Reliance In Stock Market',
            x_axis_label='Month-Year', y_axis_label='Volume',
@@ -118,7 +85,6 @@ p = figure(title='Reliance In Stock Market',
 
 p.line(x=df_reliance['Date'], y=df_reliance['Volume'], line_width=2, line_color="yellow")
 
-show(p)
 
 asianpaint_cds = ColumnDataSource(df_asianpaint)
 tatamotors_cds = ColumnDataSource(df_tatamotors)
@@ -163,7 +129,6 @@ set_style(fig1)
 set_style(fig2)
 set_style(fig3)
 
-show(tabs)
 
 fig1 =figure(title='Asian Paint Volume In Stock Market',
            x_axis_label='Month-Year', y_axis_label='Price',
@@ -194,7 +159,6 @@ set_style(fig1)
 set_style(fig2)
 set_style(fig3)
 
-show(tabs)
 
 from bokeh.layouts import layout
 from bokeh.models import HoverTool,Select
@@ -286,11 +250,5 @@ layout=layout([
                [fig],
 ])
 
-show(layout)
-
-# bokeh serve --show VisdatTugasAkhir.ipynb
-
-
-# For more on all things interaction in Bokeh, [**Adding Interactions**](https://docs.bokeh.org/en/latest/docs/user_guide/interaction.html) in the Bokeh User Guide is a great place to start.
-
-# In[ ]:
+curdoc().add_root(layout)
+curdoc().title = "Dashboard Market"
