@@ -4,7 +4,7 @@ Kelompok 11
 
 - Abdul Khaliq Al Bari ( 1301194403 )
 - Christhofer Laurent Juliant ( 1301190379 )
-- Hasna Hashifa ( 1301194235 )
+- Hasna Hashifa ( 13011 )
 
 # Tautan Link
 https://tugasbesar-visualisasidata.herokuapp.com/visdattugasakhir
